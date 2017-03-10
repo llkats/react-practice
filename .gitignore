@@ -8,6 +8,7 @@
 
 # production
 /build
+local.json
 
 # misc
 .DS_Store
