@@ -28,6 +28,7 @@ class BirbForm extends Component {
 
   handleChange(e) {
     console.log('hi change', this.props)
+    // could track changes here as autocompletes for some sort of location search api
     this.props.handleLocationChange(e.target.value)
   }
 

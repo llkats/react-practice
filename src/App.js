@@ -5,7 +5,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { location: '', birds: [] }
+    this.state = { location: '', birbs: [] }
 
     this.handleLocationChange = this.handleLocationChange.bind(this)
     this.getBirbs = this.getBirbs.bind(this)
@@ -18,11 +18,19 @@ class App extends Component {
 
   getBirbs(e) {
     console.log('birbs', e)
-    this.setState({ birds: e })
+    this.setState({ birbs: e })
   }
 
   render() {
     const loc = this.state.location ? this.state.location : ''
+    const birbs = this.state.birbs
+
+    let count = 0
+    const birbsElements = birbs.map((birb) => {
+      console.log(birb, 'birb!')
+      count++
+      return <li key={ count }>{ `${birb.howMany} ${birb.comName}s at ${birb.locName}` }</li>
+    })
 
     return (
       <div className="birbs">
@@ -33,7 +41,7 @@ class App extends Component {
         <hr/>
         <div className="birbs-results">
           <h2>Results for {loc}</h2>
-          // render result birbs here
+          <ul>{ birbsElements }</ul>
         </div>
       </div>
     );
