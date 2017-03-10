@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 
+const url = 'http://ebird.org/ws1.1/data/obs/geo/recent?lng=-122.271114&lat=37.804364&dist=2&back=5&maxResults=500&locale=en_US&fmt=json'
+
 class BirbForm extends Component {
   constructor(props) {
     super(props)
 
-    this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleChange(e) {
-    this.props.onChange(e.target.value)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleSubmit(e) {
-
-    console.log(e)
     e.preventDefault()
 
-    this.props.onChange(e.target.value)
+    fetch(url)
+    .then((response) => {
+      if (response.status !== 200) {
+        console.log(`error: ${response.status}`)
+        return
+      }
+
+      response.json().then((data) => {
+        console.log(data)
+      })
+    })
+  }
+
+  handleChange(e) {
+    console.log('hi change', this.props)
+    this.props.handleLocationChange(e.target.value)
   }
 
   render() {
@@ -30,6 +41,5 @@ class BirbForm extends Component {
     );
   }
 }
-
 
 export default BirbForm;

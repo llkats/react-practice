@@ -7,10 +7,11 @@ class App extends Component {
     super(props)
     this.state = { location: '', birds: [] }
 
-    this.handleChange = this.handleChange.bind(this)
+    this.handleLocationChange = this.handleLocationChange.bind(this)
   }
 
-  handleChange(e) {
+  handleLocationChange(e) {
+    console.log(e)
     this.setState({ location: e })
   }
 
@@ -22,7 +23,7 @@ class App extends Component {
         <div className="birbs-header">
           <h2>Birbs</h2>
         </div>
-        <BirbForm onChange={this.handleChange} location={loc} />
+        <BirbForm handleLocationChange={this.handleLocationChange} location={loc} />
         <hr/>
         <div className="birbs-results">
           <h2>Results for {loc}</h2>
