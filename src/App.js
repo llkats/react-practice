@@ -26,11 +26,17 @@ class App extends Component {
     const birbs = this.state.birbs
 
     let count = 0
-    const birbsElements = birbs.map((birb) => {
-      console.log(birb, 'birb!')
-      count++
-      return <li key={ count }>{ `${birb.howMany} ${birb.comName}s at ${birb.locName}` }</li>
-    })
+    let birbsElements
+
+    if (birbs.length > 0) {
+      birbsElements = birbs.map((birb) => {
+        count++
+        if (birb.error) {
+          return <li key={count}>{ birb.error }</li>
+        }
+        return <li key={ count }>{ `${birb.howMany} ${birb.comName}s at ${birb.locName}` }</li>
+      })
+    }
 
     return (
       <div className="birbs">
