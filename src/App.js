@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div className="birbs">
         <div className="birbs-header">
-          <h2>Birbs</h2>
+          <h2>Where The Birbs At</h2>
         </div>
         <BirbForm handleLocationChange={this.handleLocationChange} getBirbs={this.getBirbs} location={loc} />
         <hr/>
