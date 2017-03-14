@@ -15,7 +15,6 @@ class BirbForm extends Component {
   fetchBirbs(url) {
     fetch(url)
     .then((response) => {
-      console.log(response)
       if (response.status !== 200) {
         console.log(`error: ${response.status}`)
         return
